@@ -17,7 +17,7 @@ if ($conn->connect_error) {
     die("Erro na Conexão: " . $conn->connect_error);
 }
 // SELECIONANDO OS DADOS DOS CLIENTES NO BANCO
-$sql = "SELECT user_name, user_birth, user_genre, user_email  FROM ws_users WHERE  DATE_FORMAT(user_birth, '%d-%m') = DATE_FORMAT('1986-01-05', '%d-%m') AND user_id = '1'";
+$sql = "SELECT user_name, user_birth, user_genre, user_email  FROM ws_users WHERE  DATE_FORMAT(user_birth, '%d-%m') = DATE_FORMAT(CURRENT_DATE, '%d-%m')";
 $result = $conn->query($sql);
 //LOOP
 if ($result->num_rows > 0) {
@@ -59,13 +59,12 @@ if ($result->num_rows > 0) {
                 $MailContent,
                 "Felicidades {$aniversariante}!",
                 "{$row["user_email"]}"
-        )->send("Equipe Maritucs Alimentos Ltda", "ti@maritucs.com.br");
+        )->send("Equipe Maritucs Alimentos Ltda", "clientes@kuky.net.br");
         sleep(1);
     }
 
     // SELECIONANDO OS DADOS DOS CLIENTES QUE NÃO FAZEM ANIVERSÁRIO PARA INFORMAR!S
-//$sql2 = "SELECT user_name, user_birth, user_genre, user_email  FROM ws_users WHERE  DATE_FORMAT(user_birth, '%d-%m') != DATE_FORMAT(CURRENT_DATE, '%d-%m')";
-    $sql2 = "SELECT user_name, user_birth, user_genre, user_email  FROM ws_users WHERE  DATE_FORMAT(user_birth, '%d-%m') = DATE_FORMAT('1986-01-05', '%d-%m') AND user_id = '17'";
+    $sql2 = "SELECT user_name, user_birth, user_genre, user_email  FROM ws_users WHERE  DATE_FORMAT(user_birth, '%d-%m') != DATE_FORMAT(CURRENT_DATE, '%d-%m')";
     $resultperson = $conn->query($sql2);
 //LOOP
     if ($resultperson->num_rows > 0) {
@@ -105,11 +104,12 @@ if ($result->num_rows > 0) {
                     $MailContentPerson,
                     "Vamos dar os parabéns!",
                     "{$rows["user_email"]}"
-            )->send("Equipe Maritucs Alimentos Ltda", "ti@maritucs.com.br");
+            )->send("Equipe Maritucs Alimentos Ltda", "clientes@kuky.net.br");
             sleep(1);
         }
-    }//encerra a parte dos outros funcionários
-}else{
+    }
+//encerra a parte dos outros funcionários
+} else {
     echo "<p>Nenhum aniversariate do dia! :)</p>";
 }
 

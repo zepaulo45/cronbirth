@@ -11,12 +11,6 @@ define('SIS_DB_USER', 'root'); //Usuário do banco de dados
 define('SIS_DB_PASS', ''); //Senha  do banco de dados
 define('SIS_DB_DBSA', 'kuky_cadastros'); //Nome  do banco de dados
 
-define('MAIL_HOST', ''); //Servidor de e-mail
-define('MAIL_PORT', '587'); //Porta de envio
-define('MAIL_USER', ''); //E-mail de envio
-define('MAIL_PASS', ''); //Senha do e-mail de envio
-define('MAIL_FROMNAME', ''); //Nome do remetente de e-mail
-define('MAIL_FROMEMAIL', ''); //E-mail de testes (DEV)
 
 /*
  * SHIP CONFIG
